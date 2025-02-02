@@ -29,7 +29,7 @@ const Tasks = () => {
 
 
         try {
-            const { data } = await axios.get("http://localhost:5000/api/tasks", {
+            const { data } = await axios.get( `${process.env.REACT_APP_API_URL}/api/tasks` , {
                 headers: { Authorization: `Bearer ${token}` }
             });
             setTasks(data);
@@ -51,11 +51,11 @@ const Tasks = () => {
 
         try {
             if (editId) {
-                await axios.put(`http://localhost:5000/api/tasks/${editId}`, { title, description, status }, {
+                await axios.put( `${process.env.REACT_APP_API_URL}/api/tasks/${editId}`, { title, description, status }, {
                     headers: { Authorization: `Bearer ${token}` }
                 });
             } else {
-                await axios.post("http://localhost:5000/api/tasks", { title, description, status }, {
+                await axios.post(`${process.env.REACT_APP_API_URL}/api/tasks`, { title, description, status }, {
                     headers: { Authorization: `Bearer ${token}` }
                 });
             }
@@ -82,7 +82,7 @@ const Tasks = () => {
 
     const handleDelete = async (id) => {
         try {
-            await axios.delete(`http://localhost:5000/api/tasks/${id}`, {
+            await axios.delete(  `${process.env.REACT_APP_API_URL}/api/tasks/${id}`, {
                 headers: { Authorization: `Bearer ${token}` }
             });
             fetchTasks();

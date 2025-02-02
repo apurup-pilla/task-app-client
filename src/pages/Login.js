@@ -19,6 +19,8 @@ const Login = () => {
         }
     }, []);
 
+    console.log("process.env.API_URL===" , process.env)
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         setError("");
@@ -29,7 +31,7 @@ const Login = () => {
         }
 
         try {
-            const { data } = await axios.post("http://localhost:5000/api/auth/login", { email, password });
+            const { data } = await axios.post(`${process.env.REACT_APP_API_URL}/api/auth/login`, { email, password });
             login(data.token);
             navigate("/tasks");
         } catch (err) {
