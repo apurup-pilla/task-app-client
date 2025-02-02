@@ -47,6 +47,8 @@ const Signup = () => {
         }
     };
 
+    console.log("IN SIGNUP " )
+
     return (
         <div className="signup-container">
             <img src="https://divsly.com/assets/img/logo/divsly.svg" className="logo"  alt="logo" />
